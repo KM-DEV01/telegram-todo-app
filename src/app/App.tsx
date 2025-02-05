@@ -1,25 +1,23 @@
+import { init, isTMA, viewport } from "@telegram-apps/sdk-react";
+import "./styles/index.scss";
+
 import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import ReactDOM from "react-dom/client";
+import { AppRouter } from "./providers/router";
 
-import { init, miniApp } from "@telegram-apps/sdk";
-import { AppRouter } from "./providers/router.tsx";
+const initialize = () => {
+  if (isTMA()) {
+    console.log("'It's Telegram Mini Apps'");
+    init();
 
-const initializeTelegramSDK = async () => {
-  try {
-    await init();
-
-    if (miniApp.ready.isAvailable()) {
-      await miniApp.ready();
-      console.log("miniApp is ready");
-    }
-  } catch (error) {
-    console.error("error initializing Telegram SDK:", error);
+    viewport.mount();
+    viewport.expand();
   }
 };
 
-initializeTelegramSDK();
+initialize();
 
-createRoot(document.getElementById("root")!).render(
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <AppRouter />
   </StrictMode>
