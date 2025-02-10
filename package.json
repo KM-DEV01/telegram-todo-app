@@ -1,5 +1,4 @@
 {
-  "homepage": "https://km-dev01.github.io/telegram-todo-app/",
   "name": "telegram-todo-app",
   "private": true,
   "version": "0.0.0",
@@ -35,6 +34,7 @@
     "typescript": "~5.6.2",
     "typescript-eslint": "^8.18.2",
     "vite": "^6.0.5",
+    "vite-plugin-mkcert": "^1.17.6",
     "vite-tsconfig-paths": "^5.1.4"
   }
 }
