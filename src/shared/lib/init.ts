@@ -26,19 +26,21 @@ export function init(debug: boolean): void {
 
   // Mount all components used in the project.
   backButton.mount();
-  miniApp.mount();
-  themeParams.mount();
   initData.restore();
-  void viewport
-    .mount()
-    .catch((e) => {
-      console.error("Something went wrong mounting the viewport", e);
-    })
-    .then(() => {
-      viewport.bindCssVars();
-    });
+  
+  mounting().then(() => {
+    viewport.bindCssVars();
+    miniApp.bindCssVars();
+    themeParams.bindCssVars();
+  }).catch((e) => {
+    console.error(e);
+  })
 
   // Define components-related CSS variables.
-  miniApp.bindCssVars();
-  themeParams.bindCssVars();
+}
+
+const mounting = async () => {
+  await miniApp.mount();
+  await themeParams.mount();
+  await viewport.mount();
 }
