@@ -1,4 +1,4 @@
-import { ROUTES } from "@/shared/config/routes";
+import { ROUTES } from "@/shared/const/routes";
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 
