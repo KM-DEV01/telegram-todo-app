@@ -11,7 +11,7 @@ import {
 /**
  * Initializes the application and configures its dependencies.
  */
-export function init(debug: boolean): void {
+export const init = (debug: boolean): void => {
   // Set @telegram-apps/sdk-react debug mode.
   setDebug(debug);
 
@@ -27,20 +27,21 @@ export function init(debug: boolean): void {
   // Mount all components used in the project.
   backButton.mount();
   initData.restore();
-  
-  mounting().then(() => {
-    viewport.bindCssVars();
-    miniApp.bindCssVars();
-    themeParams.bindCssVars();
-  }).catch((e) => {
-    console.error(e);
-  })
 
   // Define components-related CSS variables.
-}
+  mounting()
+    .then(() => {
+      viewport.bindCssVars();
+      miniApp.bindCssVars();
+      themeParams.bindCssVars();
+    })
+    .catch((e) => {
+      console.error(e);
+    });
+};
 
 const mounting = async () => {
   await miniApp.mount();
   await themeParams.mount();
   await viewport.mount();
-}
+};
