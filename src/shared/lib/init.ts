@@ -1,11 +1,11 @@
 import {
   backButton,
-  viewport,
-  themeParams,
-  miniApp,
   initData,
-  setDebug,
   init as initSDK,
+  miniApp,
+  setDebug,
+  themeParams,
+  viewport,
 } from "@telegram-apps/sdk-react";
 
 /**

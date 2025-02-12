@@ -1,19 +1,17 @@
-import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
-import { ROUTES } from "@/shared/const/routes";
 import { HomePage } from "@/pages/HomePage";
+import { NotFoundPage } from "@/pages/NotFoundPage";
 import { TaskPage } from "@/pages/TaskPage";
-import { AppRoot } from "@telegram-apps/telegram-ui";
+import { ROUTES } from "@/shared/const/routes";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 export const AppRouter = () => {
   return (
-    <AppRoot>
-      <HashRouter>
-        <Routes>
-          <Route path={ROUTES.HOME} element={<HomePage />} />
-          <Route path={ROUTES.TASK} element={<TaskPage />} />
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-      </HashRouter>
-    </AppRoot>
+    <BrowserRouter>
+      <Routes>
+        <Route path={ROUTES.HOME} element={<HomePage />} />
+        <Route path={ROUTES.TASK} element={<TaskPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
