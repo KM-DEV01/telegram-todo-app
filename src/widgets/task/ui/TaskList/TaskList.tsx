@@ -10,7 +10,7 @@ export const TaskList: FC = () => {
   console.log(data);
 
   return (
-    <List className={css.tasks}>
+    <List className={css.tasks} style={{ color: "var(--tgui--green)" }}>
       {data.map((task) => (
         <TaskCard task={task} />
       ))}
